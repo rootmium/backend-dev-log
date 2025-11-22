@@ -1,0 +1,19 @@
+{
+  "name": "backend-dev-log",
+  "version": "0.0.1",
+  "description": "My journey to become a sucessful backend dev (hopefully)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rootmium/backend-dev-log.git"
+  },
+  "author": "Rootmium",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rootmium/backend-dev-log/issues"
+  },
+  "homepage": "https://github.com/rootmium/backend-dev-log#readme"
+}
