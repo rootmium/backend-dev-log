@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rootmium/backend-dev-log/issues"
   },
-  "homepage": "https://github.com/rootmium/backend-dev-log#readme"
+  "homepage": "https://github.com/rootmium/backend-dev-log#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
