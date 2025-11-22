@@ -11,6 +11,11 @@ app.get("/", async (_req, res) => {
   res.json({ message: "Hello world!" });
 });
 
+// ping
+app.get("/ping", async (_req, res) => {
+  res.json({ message: "Pinged successfully!", timestamp: Date.now() });
+});
+
 // Start listening
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
