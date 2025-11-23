@@ -71,3 +71,7 @@ export const jokes = [
     joke: "Why don’t Linux users get lost? They always follow the root.",
   },
 ];
+
+export const getNextId = () => {
+  return jokes[jokes.length - 1].id + 1;
+};
