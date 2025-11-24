@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rootmium/backend-dev-log#readme",
   "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.0.0",
     "@prisma/client": "^7.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0"
