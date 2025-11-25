@@ -19,25 +19,40 @@ const selectJokeById = async (id) => {
 export const getJokeById = async (req, res) => {
     try {
         const requestId = req.params.id;
-        console.log(Number.isInteger(Number.parseInt(requestId)));
-        // const joke = await selectJokeById(requestId);
-        // res.json(joke);
-        res.send("Done");
-    } catch (err) {}
+        if (!Number.isInteger(Number.parseInt(requestId))) {
+            return res.status(400).json({ error: "Bad request" });
+        }
+
+        const joke = await selectJokeById(requestId);
+        res.status(200).json(joke);
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
 };
 
 export const getRandomJoke = async (_req, res) => {
-    const totalJokes = await prisma.joke.count();
-    const randomId = Math.floor(Math.random() * totalJokes);
-    const joke = await selectJokeById(randomId);
-    res.status(200).json(joke);
+    try {
+        const totalJokes = await prisma.joke.count();
+        const randomId = Math.floor(Math.random() * totalJokes);
+        const joke = await selectJokeById(randomId);
+        res.status(200).json(joke);
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
 };
 
 export const createJoke = async (req, res) => {
-    const text = req.body.text;
+    try {
+        const text = req.body.text;
+        if (!text) {
+            return res.status(400).json({ error: "text doesn't exist" });
+        }
 
-    const newJoke = await prisma.joke.create({
-        data: { text },
-    });
-    res.status(201).json(newJoke);
+        const newJoke = await prisma.joke.create({
+            data: { text },
+        });
+        res.status(201).json(newJoke);
+    } catch (err) {
+        return res.status(500).json({ error: err });
+    }
 };
