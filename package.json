@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "deno server.ts",
-    "dev": "deno server.ts",
+    "dev": "deno --watch server.ts",
     "seed": "deno seed.ts"
   },
   "repository": {
