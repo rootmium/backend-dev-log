@@ -1,10 +1,9 @@
 import { DatabaseSync } from "node:sqlite";
 const db = new DatabaseSync("./dev.db");
-const sql = db.createTagStore();
 
 export const getAllJokes = (_req, res) => {
   try {
-    const jokes = sql.all`SELECT * FROM Joke`
+    const jokes = db.prepare("SELECT * FROM Joke").all()
     res.status(200).json(jokes);
   } catch (err) {
     res.status(500).json({ error: err });
@@ -12,7 +11,7 @@ export const getAllJokes = (_req, res) => {
 };
 
 const selectJokeById = (id) => {
-  const joke = sql.get`SELECT id, text FROM Joke WHERE id = ${id}`
+  const joke = db.prepare(`SELECT id, text FROM Joke WHERE id = ${id}`).get()
   return joke;
 };
 
@@ -32,7 +31,7 @@ export const getJokeById = (req, res) => {
 
 export const getRandomJoke = (_req, res) => {
     try {
-      const joke = sql.all`SELECT * FROM Joke ORDER BY random() LIMIT 1`
+      const joke = db.prepare(`SELECT * FROM Joke ORDER BY random() LIMIT 1`).all()
         res.status(200).json(joke);
     } catch (err) {
         res.status(500).json({ error: err });
