@@ -17,10 +17,27 @@ const server = createServer((req, res) => {
     res.writeHeader(200, { "Content-Type": "text/html" })
     res.end(`<h1>Server is fine.</h1><br><p>${new Date().getTime()}`)
   }
-
   else if (path === "/jokes" && method === "GET") {
     res.writeHeader(200, { "Content-Type": "text/json" }) 
     res.end(JSON.stringify(jokes, null, 2))
+  }
+    
+    // Create new jokes
+  else if (path === "/jokes" && method === "POST") {
+    // let body = []
+
+    req.on("data", chunk => {
+      console.log(chunk.toString())
+    })
+
+    // req.on("end", () => {
+    //   const bufferData = Buffer.concat(body)
+    //   console.log(bufferData)
+    // })
+
+    // console.log(req)
+    res.writeHeader(200, { "Content-Type": "text/json" }) 
+    res.end(JSON.stringify(jokes[1], null, 2))
   }
 
     // random route
