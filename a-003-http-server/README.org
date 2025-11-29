@@ -1,16 +1,40 @@
 * Basic HTTP server
-
-
+** Create basic http server
+** Send response
+** Parse request
+** Create URL
+** Routing with if else statements
 
 * Test area
+** Root Route
 #+BEGIN_SRC http
   GET http://localhost:3000/
 #+END_SRC
 
-#+RESULTS:
-: HTTP/1.1 201 Created
-: Content-Type: text/json
-: Date: Sat, 29 Nov 2025 18:11:28 GMT
-: Content-Length: 23
-: 
-: {"name":"hello world!"}
+** Ping Route
+#+BEGIN_SRC http
+  GET http://localhost:3000/ping
+#+END_SRC
+
+** All Jokes Route
+#+BEGIN_SRC http
+  GET http://localhost:3000/jokes
+#+END_SRC
+
+** Get Route by id
+#+BEGIN_SRC http
+  GET http://localhost:3000/jokes/99
+#+END_SRC
+
+** Random jokes
+#+BEGIN_SRC http
+  GET http://localhost:3000/jokes/random
+#+END_SRC
+
+** Create new jokes
+#+BEGIN_SRC http
+  POST http://localhost:3000/jokes
+  Content-Type: application/plain
+
+  { "text": "Our new joke" }
+#+END_SRC
