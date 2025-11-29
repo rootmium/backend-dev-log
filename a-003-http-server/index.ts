@@ -3,12 +3,9 @@ import { createServer } from "node:http";
 const port = 3000;
 
 const server = createServer((req, res) => {
-  console.log(`url: ${req.url}`)
-  console.log(`method: ${req.method}`)
-  console.log(JSON.stringify(req.headers))
-  console.log(req.headers.host)
-  console.log(req.headers["user-agent"])
-  console.log(req.headers.accept)
+  const url = `http://${req.headers.host}${req.url}`
+  const parsedUrl = new URL(url)
+  console.log(parsedUrl)
 
   res.writeHeader(201, {
     "Content-Type": "text/json"
