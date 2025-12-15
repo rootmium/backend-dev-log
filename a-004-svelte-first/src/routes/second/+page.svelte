@@ -39,6 +39,7 @@
 		<button
 			style="background: {color}"
 			aria-current={selected === color}
+			aria-label={selected}
 			onclick={() => {
 				selected = color;
 				console.log(selected);
